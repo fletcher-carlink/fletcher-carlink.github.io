@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="referrer" content="no-referrer"><title>Authorization code</title></head>
+<body style="font-family:sans-serif;max-width:40em;margin:3em auto">
+<h1>Authorization received</h1>
+<p>Copy this code (expires in a few minutes):</p>
+<pre id="c" style="background:#eee;padding:1em;white-space:pre-wrap;word-break:break-all"></pre>
+<p>State: <code id="s"></code></p><p id="e" style="color:#b00"></p>
+<script>
+var p=new URLSearchParams(location.search);
+document.getElementById('c').textContent=p.get('code')||'(no code in URL)';
+document.getElementById('s').textContent=p.get('state')||'';
+if(p.get('error'))document.getElementById('e').textContent='Error: '+p.get('error')+' '+(p.get('error_description')||'');
+</script></body></html>
